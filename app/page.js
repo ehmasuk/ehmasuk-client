@@ -5,7 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import { Icon } from "@iconify-icon/react";
 import { BackTop, Tooltip } from "antd";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Home() {
     const [scrolled, setScrolled] = useState(0);
@@ -18,9 +18,7 @@ function Home() {
 
     return (
         <div>
-            <Suspense fallback={<div>Loading...</div>}>
-                <HeroSection />
-            </Suspense>
+            <HeroSection />
 
             {/* hero bottom bar */}
             <div className={`absolute bottom-0 left-0 w-full px-5 hidden lg:block ${scrolled > 10 ? "h-0 opacity-0" : "h-16 opacity-100"} duration-500 overflow-hidden`}>

@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import BackgroundText from "./BackgroundText";
 
+import SkeletonImage from "antd/es/skeleton/Image";
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
@@ -14,15 +15,17 @@ function ProjectsSection() {
     let sliderRef = useRef(null);
 
     const [allProjects, setAllProjects] = useState();
+    const [isLoaded, setIsLoaded] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const getProjects = async () => {
+        setIsLoaded(true);
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/projects");
         const data = await res.json();
         setAllProjects(data);
+        setIsLoaded(false);
     };
     useEffect(() => {
         getProjects();
-
         setLoaded(true);
     }, []);
 
@@ -81,6 +84,7 @@ function ProjectsSection() {
                                         height={500}
                                         sizes="(min-width: 808px) 50vw, 100vw"
                                     />
+                                    {isLoaded && <SkeletonImage active />}
                                 </div>
                                 <p className="text-4xl font-bold mb-3 text-white">{project.title}</p>
                                 <p className="text-xl text-des leading-relaxed max-w-lg">{project.subTitle}</p>
