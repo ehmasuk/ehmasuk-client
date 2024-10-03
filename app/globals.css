@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #1b1919;
+    --foreground: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-sfPro);
+    letter-spacing: 2px;
+    padding: 0 30px;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+    .bg-primary {
+        background-color: #1b1919;
+    }
+    .text-des {
+        color: rgb(255 255 255 / 75%);
+    }
+    .text-link {
+        color: rgb(255 255 255 / 70%);
+    }
+    .text-link:hover {
+        color: #fff;
+    }
+}
+
+.slick-list {
+    max-height: 450px !important;
+}
